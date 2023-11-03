@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_upphex.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmontes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 09:46:21 by fmontes           #+#    #+#             */
-/*   Updated: 2023/11/03 09:48:49 by fmontes          ###   ########.fr       */
+/*   Created: 2023/10/31 13:50:43 by fmontes           #+#    #+#             */
+/*   Updated: 2023/10/31 14:10:43 by fmontes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	get_upphex(unsigned int n)
+void	ft_putnbr(int num)
 {
-	int	i;
-	char	rem;
-	char	str[8];
-
-	i = 0;
-	while (n > 0)
+	
+	if (num == -2147483648)
 	{
-		rem = n % 16;
-		if (rem < 10)
-			str[i] = rem + 48;
-		else
-			str[i] = rem + 55;
-		n = n /16;
-		i++;
+		write(1, "-2147483648", 11);
 	}
-	while (i--)
-		write(1, &str[i], 1);
+	if (num < 0)
+	{
+		ft_putchar('-');
+		num *= -1;
+	}
+	if (num >= 10)
+		ft_putnbr(num / 10);
+	ft_putchar((num % 10) + 48);
 }

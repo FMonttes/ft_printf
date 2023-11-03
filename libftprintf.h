@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_upphex.c                                       :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmontes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 09:46:21 by fmontes           #+#    #+#             */
-/*   Updated: 2023/11/03 09:48:49 by fmontes          ###   ########.fr       */
+/*   Created: 2023/11/03 09:45:31 by fmontes           #+#    #+#             */
+/*   Updated: 2023/11/03 13:28:39 by fmontes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 
-void	get_upphex(unsigned int n)
-{
-	int	i;
-	char	rem;
-	char	str[8];
+# include <unistd.h>
+# include <stdarg.h>
 
-	i = 0;
-	while (n > 0)
-	{
-		rem = n % 16;
-		if (rem < 10)
-			str[i] = rem + 48;
-		else
-			str[i] = rem + 55;
-		n = n /16;
-		i++;
-	}
-	while (i--)
-		write(1, &str[i], 1);
-}
+void	check_args(const char *format, int i, va_list ap);
+int		ft_printf(const char *format, ...);
+void	ft_putchar(char c);
+void	ft_putnbr(int num);
+void	ft_putstr(char *str);
+void	ft_putunsgnbr(unsigned int num);
+void	get_lowhex(unsigned int n);
+void	get_upphex(unsigned int n);
+void	get_mem(unsigned long n);
+
+#endif
