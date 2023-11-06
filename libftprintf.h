@@ -6,7 +6,7 @@
 /*   By: fmontes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:45:31 by fmontes           #+#    #+#             */
-/*   Updated: 2023/11/03 13:28:39 by fmontes          ###   ########.fr       */
+/*   Updated: 2023/11/06 12:02:59 by fmontes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-void	check_args(const char *format, int i, va_list ap);
-int		ft_printf(const char *format, ...);
-void	ft_putchar(char c);
-void	ft_putnbr(int num);
-void	ft_putstr(char *str);
-void	ft_putunsgnbr(unsigned int num);
-void	get_lowhex(unsigned int n);
-void	get_upphex(unsigned int n);
-void	get_mem(unsigned long n);
+int	check_args(const char *format, int i, va_list ap);
+int	ft_printf(const char *format, ...);
+int	ft_putchar(char c);
+int	ft_putnbr(int num);
+int	ft_putstr(char *str);
+int	ft_putunsgnbr(unsigned int num);
+int	get_lowhex(unsigned int n);
+int	get_upphex(unsigned int n);
+int	get_mem(unsigned long n);
 
 #endif

@@ -6,19 +6,24 @@
 /*   By: fmontes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 13:21:15 by fmontes           #+#    #+#             */
-/*   Updated: 2023/11/03 13:32:09 by fmontes          ###   ########.fr       */
+/*   Updated: 2023/11/06 12:00:13 by fmontes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	get_mem(unsigned long n)
+static int	if_zero(void);
+
+int	get_mem(unsigned long n)
 {
-	int	i;
+	int		i;
+	int		k;
 	char	rem;
-	char	str[14];
+	char	str[16];
 
 	i = 0;
+	if (n == 0)
+		return (if_zero());
 	while (n > 0)
 	{
 		rem = n % 16;
@@ -31,6 +36,14 @@ void	get_mem(unsigned long n)
 	}
 	str[i++] = 'x';
 	str[i++] = '0';
+	k = i;
 	while (i--)
 		write(1, &str[i], 1);
+	return (k);
+}
+
+static int	if_zero(void)
+{
+	ft_putstr("(nil)");
+	return (5);
 }
